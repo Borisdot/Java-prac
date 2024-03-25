@@ -124,7 +124,8 @@ public class ServiceHistoryDAOTest {
         ServiceHistory temp_obj3 = new ServiceHistory();
         Clients cl3 = new Clients("Иванов TEST Иванович", "Иванов Иванович", "123 Main St", "123-456-7890", "ivanov@example.com");
         clientsDAO.save(cl3);
-        Employees emp3 = employeesDAO.getById(6L);
+        Employees emp3 = new Employees("CHANGE IN SERVICE_HISTORY1", "Search1", "Anytown12345", "Test1", "Test1");
+        employeesDAO.save(emp3);
         Services serv3 = servicesDAO.getById(5L);
         Date begin_3 = new Date(2024 - 1900, 0, 24);
         temp_obj3.setClient_id(cl3);
@@ -134,10 +135,24 @@ public class ServiceHistoryDAOTest {
         temp_obj3.setEnd_(null);
         serviceHistoryDAO.save(temp_obj3);
 
+        ServiceHistory temp_obj777 = new ServiceHistory();
+        Clients cl777 = clientsDAO.getById(4L);
+        Employees emp777 = new Employees("CHANGE IN SERVICE_HISTORY", "Search1", "Anytown12345", "Test1", "Test11");
+        employeesDAO.save(emp777);
+        Services serv777 = servicesDAO.getById(6L);
+        Date begin_777 = new Date(2024 - 1900, 0, 24);
+        temp_obj777.setClient_id(cl777);
+        temp_obj777.setEmployee_id(emp777);
+        temp_obj777.setService_id(serv777);
+        temp_obj777.setBegin_(begin_777);
+        temp_obj777.setEnd_(null);
+        serviceHistoryDAO.save(temp_obj777);
+
         ServiceHistory temp_obj4 = new ServiceHistory();
         Clients cl5 = new Clients("Иванов TEST Иванович", "Иванов TEST Иванович", "123 Main", "123-456-7890", "ivanov@example.com");
         clientsDAO.save(cl5);
-        Employees emp5 = employeesDAO.getById(6L);
+        Employees emp5 = new Employees("CHANGE IN SERVICE_HISTORY", "Search11", "Anytown12345", "Test1", "Test1");
+        employeesDAO.save(emp5);
         Services serv5 = servicesDAO.getById(6L);
         Date begin_5 = new Date(2024 - 1900, 0, 24);
         temp_obj4.setClient_id(cl5);
@@ -150,8 +165,10 @@ public class ServiceHistoryDAOTest {
         ServiceHistory temp_obj5 = new ServiceHistory();
         Clients cl6 = new Clients("Иванов TEST Иванович", "Иванов TEST Иванович", "123 Main St", "123-456-0987", "ivanov@example.com");
         clientsDAO.save(cl6);
-        Employees emp6 = employeesDAO.getById(7L);
-        Services serv6 = servicesDAO.getById(7L);
+        Employees emp6 = new Employees("CHANGE IN SERVICE_HISTORY", "Search1", "Anytown123451", "Test1", "Test1");
+        employeesDAO.save(emp6);
+        Services serv6 = new Services("Search1", 101F);
+        servicesDAO.save(serv6);
         Date begin_6 = new Date(2024 - 1900, 0, 24);
         temp_obj5.setClient_id(cl6);
         temp_obj5.setEmployee_id(emp6);
@@ -161,10 +178,12 @@ public class ServiceHistoryDAOTest {
         serviceHistoryDAO.save(temp_obj5);
 
         ServiceHistory temp_obj6 = new ServiceHistory();
-        Clients cl7 = new Clients("Иванов TEST Иванович", "Иванов TEST Иванович", "123 Main St", "123-456-0987", "ivanov@exe.com");
+        Clients cl7 = new Clients("Иванов TEST Иванович", "Иванов TEST Иванович", "123 Main St", "123-456-7890", "ivanov@exe.com");
         clientsDAO.save(cl7);
-        Employees emp7 = employeesDAO.getById(8L);
-        Services serv7 = servicesDAO.getById(8L);
+        Employees emp7 = new Employees("CHANGE IN SERVICE_HISTORY", "Search1", "Anytown12345", "Test11", "Test1");
+        employeesDAO.save(emp7);
+        Services serv7 = new Services("Search11", 100F);
+        servicesDAO.save(serv7);
         Date begin_7 = new Date(2024 - 1900, 0, 24);
         temp_obj6.setClient_id(cl7);
         temp_obj6.setEmployee_id(emp7);
@@ -173,11 +192,24 @@ public class ServiceHistoryDAOTest {
         temp_obj6.setEnd_(null);
         serviceHistoryDAO.save(temp_obj6);
 
-        ClientsDAO.Filter filter1 = new ClientsDAO.Filter("Иванов TEST Иванович", "Иванов TEST Иванович", "123 Main St", "123-456-7890", null);
-        EmployeesDAO.Filter filter2 = new EmployeesDAO.Filter(null, null, null, null, "Test1");
+        ClientsDAO.Filter filter1 = new ClientsDAO.Filter("Иванов TEST Иванович", "Иванов TEST Иванович", "123 Main St", "123-456-7890", "ivanov@example.com");
+        EmployeesDAO.Filter filter2 = new EmployeesDAO.Filter(null, null, null, null, null);
         ServicesDAO.Filter filter3 = new ServicesDAO.Filter(null, 100F);
         List<ServiceHistory> view = (List<ServiceHistory>) serviceHistoryDAO.getByFilter(filter1, filter2, filter3);
         assertEquals(1, view.size());
+
+        ClientsDAO.Filter filter11 = new ClientsDAO.Filter(null, null, null, null, null);
+        EmployeesDAO.Filter filter22 = new EmployeesDAO.Filter("CHANGE IN SERVICE_HISTORY", "Search1", "Anytown12345", "Test1", "Test1");
+        ServicesDAO.Filter filter33 = new ServicesDAO.Filter(null, 100F);
+        List<ServiceHistory> view1 = (List<ServiceHistory>) serviceHistoryDAO.getByFilter(filter11, filter22, filter33);
+        assertEquals(5L, view1.get(0).getEmployee_id().getId());
+        assertEquals(2, view1.size());
+
+        ClientsDAO.Filter filter111 = new ClientsDAO.Filter(null, null, null, null, null);
+        EmployeesDAO.Filter filter222 = new EmployeesDAO.Filter(null, null, null, null, null);
+        ServicesDAO.Filter filter333 = new ServicesDAO.Filter("Search1", 100F);
+        List<ServiceHistory> view11 = (List<ServiceHistory>) serviceHistoryDAO.getByFilter(filter111, filter222, filter333);
+        assertEquals(3, view11.size());
 
     }
     @BeforeEach
