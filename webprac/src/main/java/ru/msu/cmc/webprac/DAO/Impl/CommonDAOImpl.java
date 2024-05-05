@@ -7,7 +7,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Repository;
 import ru.msu.cmc.webprac.DAO.CommonDAO;
 import ru.msu.cmc.webprac.models.CommonEntity;
-
+import org.hibernate.query.Query;
 import jakarta.persistence.criteria.CriteriaQuery;
 
 import java.io.Serializable;
@@ -36,10 +36,11 @@ public abstract class CommonDAOImpl<T extends CommonEntity<ID>, ID extends Seria
 
     @Override
     public Collection<T> getAll() {
-        try (Session session = sessionFactory.openSession()) {
-            javax.persistence.criteria.CriteriaQuery<T> criteriaQuery = session.getCriteriaBuilder().createQuery(persistentClass);
+        try(Session session = sessionFactory.openSession()) {
+            CriteriaQuery<T> criteriaQuery = session.getCriteriaBuilder().createQuery(persistentClass);
             criteriaQuery.from(persistentClass);
-            return session.createQuery(criteriaQuery).getResultList();
+            Query<T> query = session.createQuery(criteriaQuery);
+            return query.getResultList();
         }
     }
 

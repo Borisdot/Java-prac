@@ -102,7 +102,8 @@ public class ClientsDAOTest {
     void beforeEach() {
         try (Session session = sessionFactory.openSession()) {
             session.beginTransaction();
-            session.createSQLQuery("TRUNCATE Clients RESTART IDENTITY CASCADE;").executeUpdate();
+//            session.createQuery("TRUNCATE Clients RESTART IDENTITY CASCADE;").executeUpdate();
+            session.createNativeQuery("TRUNCATE TABLE Clients RESTART IDENTITY CASCADE").executeUpdate();
             session.getTransaction().commit();
         }
     }

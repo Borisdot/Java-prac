@@ -9,4 +9,6 @@ public interface ServiceHistoryDAO extends CommonDAO<ServiceHistory, Long>{
     Collection<ServiceHistory> getByFilter(ClientsDAO.Filter filter1,
                                            EmployeesDAO.Filter filter2,
                                            ServicesDAO.Filter filter3);
+
+    Boolean ifThereIsSuchItem(ServiceHistory serviceHistory);
 }

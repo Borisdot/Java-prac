@@ -1,0 +1,208 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Оказанные услуги</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style>
+        .indent {
+            margin-left: 30px;
+            margin-right: 30px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<style>
+    body{background: url("https://www.worldcenterofbaby.it/wp-content/uploads/2020/09/transmiterea-pasivului-succesoral.jpg") no-repeat center center fixed; background-size:cover;}
+    .fixed-bottom {
+        color: white;
+        font-size: 24px;
+        text-shadow: 5px 5px 5px black; /* Добавлено тень для текста */
+    }
+    table {
+        width: 100%; /* Ширина таблицы на 100% */
+        border-collapse: collapse; /* Объединение границ ячеек */
+        background-color: lightgray; /* Цвет фона таблицы */
+        border-radius: 20px; /* Закругление углов */
+        overflow: hidden; /* Обрезка содержимого, чтобы углы были закруглены */
+    }
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd; /* Граница между ячейками */
+    }
+    /* Стили для кнопки */
+    .button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        text-align: left;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+        margin-top: -20px;
+        margin-right: -60px;
+    }
+
+    .button:hover {
+        background-color: #45a049;
+    }
+
+    /* Стили для контейнера */
+    .container {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center; /* Центрирование контейнера */
+        margin: 100px auto; /* Центрирование контейнера */
+        width: 100vw; /* Установка ширины контейнера на 90% от ширины страницы */
+        max-width: 90%; /* Установка максимальной ширины контейнера на 90% от ширины страницы */
+    }
+
+    /* Стили для таблицы */
+    .centered-table {
+        width: 100%; /* Отводим 50% ширины для таблицы */
+        border-collapse: collapse;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-left: 20px; /* Отступ слева между формами */
+    }
+
+    .centered-table th, .centered-table td {
+        padding: 10px;
+        border: 1px solid #ddd;
+    }
+
+    /* Стили для формы */
+    .search-form {
+        width: 40%; /* Отводим 40% ширины для формы */
+        padding: 20px;
+        background-color: #f2f2f2; /* Цвет фона формы */
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-right: 10px; /* Отступ справа между формами */
+    }
+    /* Стили для формы */
+    .add-form {
+        width: 40%; /* Отводим 40% ширины для формы */
+        padding: 20px;
+        background-color: #f2f2f2; /* Цвет фона формы */
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-left: 10px; /* Отступ слева между формами */
+    }
+
+    /* Стили для кнопки внутри формы */
+    .search-form .button {
+        margin-top: 10px;
+        width: 100%; /* Ширина кнопки равна ширине формы */
+    }
+
+    /* Стили для кнопки внутри формы */
+    .add-form .button {
+        margin-top: 10px;
+        width: 100%; /* Ширина кнопки равна ширине формы */
+    }
+
+    /* Стили для полей ввода */
+    .search-form input[type="text"] {
+        width: calc(100% - 22px); /* Отводим 100% ширины для каждого поля ввода и учитываем отступы */
+        margin-bottom: 10px; /* Отступ снизу между полями */
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        box-sizing: border-box; /* Учитываем границы в размере */
+    }
+
+    /* Стили для полей ввода */
+    .add-form input[type="text"] {
+        width: calc(100% - 22px); /* Отводим 100% ширины для каждого поля ввода и учитываем отступы */
+        margin-bottom: 10px; /* Отступ снизу между полями */
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        box-sizing: border-box; /* Учитываем границы в размере */
+    }
+</style>
+
+<body>
+<div th:replace="index :: page-header"></div>
+
+<div class="container">
+    <table class="centered-table">
+        <thead>
+        <tr>
+            <!-- Подзаголовки для клиента -->
+            <th colspan="5" class="center">Клиент</th>
+            <!-- Подзаголовки для служащего -->
+            <th colspan="5" class="center">Служащий</th>
+            <!-- Подзаголовки для услуги -->
+            <th colspan="2" class="center">Услуга</th>
+            <!-- Подзаголовки для времени -->
+            <th colspan="2" class="center">Даты</th>
+        </tr>
+        <tr>
+            <!-- Заголовки для клиента -->
+            <th>ФИО</th>
+            <th>Контакт</th>
+            <th>Адрес</th>
+            <th>Телефон</th>
+            <th>Почта</th>
+            <!-- Заголовки для служащего -->
+            <th>ФИО</th>
+            <th>Адрес</th>
+            <th>Телефон</th>
+            <th>Почта</th>
+            <th>Должность</th>
+            <!-- Заголовки для услуги -->
+            <th>Название</th>
+            <th>Стоимость</th>
+            <!-- Заголовки для даты -->
+            <th>Начало</th>
+            <th>Конец</th>
+        </tr>
+        </thead>
+        <tr th:each="history : ${serviceHistory}">
+            <td th:text="${history.getClient_id().name}"></td>
+            <td th:text="${history.getClient_id().contact}"></td>
+            <td th:text="${history.getClient_id().address}"></td>
+            <td th:text="${history.getClient_id().phone}"></td>
+            <td th:text="${history.getClient_id().email}"></td>
+            <td th:if="${history.getEmployee_id() == null}" class="tableText">-</td>
+            <td th:if="${history.getEmployee_id() != null}" th:text="${history.getEmployee_id().name}"></td>
+            <td th:if="${history.getEmployee_id()==null}" class="tableText">-</td>
+            <td th:if="${history.getEmployee_id()!=null}" th:text="${history.getEmployee_id().address}"></td>
+            <td th:if="${history.getEmployee_id()==null}" class="tableText">-</td>
+            <td th:if="${history.getEmployee_id()!=null}" th:text="${history.getEmployee_id().phone}"></td>
+            <td th:if="${history.getEmployee_id()==null}" class="tableText">-</td>
+            <td th:if="${history.getEmployee_id()!=null}" th:text="${history.getEmployee_id().email}"></td>
+            <td th:if="${history.getEmployee_id()==null}" class="tableText">-</td>
+            <td th:if="${history.getEmployee_id()!=null}" th:text="${history.getEmployee_id().function_}"></td>
+            <td th:if="${history.getService_id()==null}" class="tableText">-</td>
+            <td th:if="${history.getService_id()!=null}" th:text="${history.getService_id().name}"></td>
+            <td th:if="${history.getService_id()==null}" class="tableText">-</td>
+            <td th:if="${history.getService_id()!=null}" th:text="${history.getService_id().cost}"></td>
+            <td th:if="${history.begin_==null}" class="tableText">-</td>
+            <td th:if="${history.begin_!=null}" th:text="${history.begin_}"></td>
+            <td th:if="${history.end_==null}" class="tableText">-</td>
+            <td th:if="${history.end_!=null}" th:text="${history.end_}"></td>
+            <td>
+                <form method="post" action="/serviceHistory/edit/delete" class="inlineForm">
+                    <input type="hidden" name="id" th:value="${history.id}">
+                    <button type="submit">Удалить из базы</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+</div>
+<!-- Кнопка "Закончить редактирование" -->
+<div style="text-align: center; margin-top: -40px; margin-left: -150px;">
+    <a class="button" href="/serviceHistory">Закончить редактирование</a>
+</div>
+<div th:replace="index :: site-footer"></div>
+<div th:replace="index :: site-script"></div>
+</body>
+</html>

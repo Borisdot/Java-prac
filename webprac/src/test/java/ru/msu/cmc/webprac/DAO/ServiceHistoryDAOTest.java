@@ -216,7 +216,8 @@ public class ServiceHistoryDAOTest {
     void beforeEach() {
         try (Session session = sessionFactory.openSession()) {
             session.beginTransaction();
-            session.createSQLQuery("TRUNCATE website_test.public.servicehistory RESTART IDENTITY CASCADE;").executeUpdate();
+//            session.createQuery("TRUNCATE website_test.public.servicehistory RESTART IDENTITY CASCADE;").executeUpdate();
+            session.createNativeQuery("TRUNCATE TABLE website_test.public.servicehistory RESTART IDENTITY CASCADE").executeUpdate();
             session.getTransaction().commit();
         }
     }

@@ -25,8 +25,12 @@ public class ServiceHistoryDAOImpl extends CommonDAOImpl<ServiceHistory, Long> i
             session.beginTransaction();
             Employees employees = entity.getEmployee_id();
             Services services = entity.getService_id();
-            session.update(employees);
-            session.update(services);
+            if (employees != null) {
+                session.update(employees);
+            }
+            if (services != null) {
+                session.update(services);
+            }
             session.update(entity);
             session.getTransaction().commit();
         }
@@ -91,5 +95,20 @@ public class ServiceHistoryDAOImpl extends CommonDAOImpl<ServiceHistory, Long> i
             new_sorted.add(serviceHistory);
         }
         return new_sorted;
+    }
+
+    @Override
+    public Boolean ifThereIsSuchItem(ServiceHistory serviceHistory) {
+        List<ServiceHistory> sorted = (List<ServiceHistory>) getAll();
+        for (ServiceHistory item : sorted) {
+            if (item.getClient_id() == serviceHistory.getClient_id() &&
+                    item.getEmployee_id() == serviceHistory.getEmployee_id() &&
+                    item.getService_id() == serviceHistory.getService_id() &&
+                    item.getBegin_() == serviceHistory.getBegin_() &&
+                    item.getEnd_() == serviceHistory.getEnd_()) {
+                return false;
+            }
+        }
+        return true;
     }
 }

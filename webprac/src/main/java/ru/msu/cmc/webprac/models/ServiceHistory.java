@@ -1,6 +1,6 @@
 package ru.msu.cmc.webprac.models;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.sql.Date;
