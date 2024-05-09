@@ -153,51 +153,51 @@
                 <form method="get" action="/serviceHistory/search">
                     <!-- Поля для ввода параметров -->
                     <p>Клиент</p>
-                    <input type="text" name="client_Name" placeholder="ФИО">
-                    <input type="text" name="contact_person" placeholder="Контакт">
-                    <input type="text" name="address_client" placeholder="Адрес">
-                    <input type="text" name="phone_client" placeholder="Телефон">
-                    <input type="text" name="email_client" placeholder="Почта">
+                    <input type="text" id="1_search" name="client_Name" placeholder="ФИО">
+                    <input type="text" id="2_search" name="contact_person" placeholder="Контакт">
+                    <input type="text" id="3_search" name="address_client" placeholder="Адрес">
+                    <input type="text" id="4_search" name="phone_client" placeholder="Телефон">
+                    <input type="text" id="5_search" name="email_client" placeholder="Почта">
                     <p>Служащий</p>
-                    <input type="text" name="employee_Name" placeholder="ФИО">
-                    <input type="text" name="address" placeholder="Адрес">
-                    <input type="text" name="phone" placeholder="Телефон">
-                    <input type="text" name="email" placeholder="Почта">
-                    <input type="text" name="function_" placeholder="Должность">
+                    <input type="text" id="6_search" name="employee_Name" placeholder="ФИО">
+                    <input type="text" id="7_search" name="address" placeholder="Адрес">
+                    <input type="text" id="8_search" name="phone" placeholder="Телефон">
+                    <input type="text" id="9_search" name="email" placeholder="Почта">
+                    <input type="text" id="10_search" name="function_" placeholder="Должность">
                     <p>Услуга</p>
-                    <input type="text" name="service_Name" placeholder="Название">
-                    <input type="text" name="cost" placeholder="Стоимость">
+                    <input type="text" id="11_search" name="service_Name" placeholder="Название">
+                    <input type="text" id="12_search" name="cost" placeholder="Стоимость">
                     <!-- Кнопка поиска -->
-                    <button type="submit" class="button">Найти</button>
+                    <button type="submit" id="searchServices" class="button">Найти</button>
                 </form>
             </div>
         </div>
 
         <div class="col-md-6">
-            <div class="search-form">
+            <div class="add-form">
                 <form method="post" action="/serviceHistory/add">
                     <p>Для добавления записи не требуется полностью вводить информацию о клиенте, сотруднике и тд</p>
                     <p>Введите информацию, которая охарактеризует клиента, сотрудника и тд</p>
                     <p>Если не удается однозначно установить клиента, сотрудника и тд, будет выведена ошибка - "Уточните информацию"</p>
                     <p>Клиент</p>
-                    <input type="text"  name="client_Name" placeholder="ФИО">
-                    <input type="text"  name="contact_person" placeholder="Контакт">
-                    <input type="text"  name="address_client" placeholder="Адрес">
-                    <input type="text"  name="phone_client" placeholder="Телефон">
-                    <input type="text"  name="email_client" placeholder="Почта">
+                    <input type="text"  id="1_add" name="client_Name" placeholder="ФИО">
+                    <input type="text"  id="2_add" name="contact_person" placeholder="Контакт">
+                    <input type="text"  id="3_add" name="address_client" placeholder="Адрес">
+                    <input type="text"  id="4_add" name="phone_client" placeholder="Телефон">
+                    <input type="text"  id="5_add" name="email_client" placeholder="Почта">
                     <p>Служащий</p>
-                    <input type="text" name="employee_Name" placeholder="ФИО">
-                    <input type="text" name="address_employee" placeholder="Адрес">
-                    <input type="text" name="phone_employee" placeholder="Телефон">
-                    <input type="text" name="email_employee" placeholder="Почта">
-                    <input type="text" name="function_" placeholder="Должность">
+                    <input type="text" id="6_add" name="employee_Name" placeholder="ФИО">
+                    <input type="text" id="7_add" name="address_employee" placeholder="Адрес">
+                    <input type="text" id="8_add" name="phone_employee" placeholder="Телефон">
+                    <input type="text" id="9_add" name="email_employee" placeholder="Почта">
+                    <input type="text" id="10_add" name="function_" placeholder="Должность">
                     <p>Услуга</p>
-                    <input type="text" name="service_Name" placeholder="Название">
-                    <input type="text" name="cost" placeholder="Стоимость">
+                    <input type="text" id="11_add" name="service_Name" placeholder="Название">
+                    <input type="text" id="12_add" name="cost" placeholder="Стоимость">
                     <p>Даты</p>
-                    <input type="text" name="begin_" placeholder="Начало">
-                    <input type="text" name="end_" placeholder="Конец">
-                    <button type="submit" class="button">Добавить</button>
+                    <input type="text" id="13_add" name="begin_" placeholder="Начало">
+                    <input type="text" id="14_add" name="end_" placeholder="Конец">
+                    <button type="submit" id="addServiceHistory" class="button">Добавить</button>
                 </form>
             </div>
         </div>
@@ -206,7 +206,7 @@
 
 <div class="container">
     <!-- Таблица с данными -->
-    <table class="centered-table">
+    <table id="serviceHistoryList" class="centered-table">
         <thead>
         <tr>
             <!-- Подзаголовки для клиента -->
@@ -297,7 +297,7 @@
 
     <!-- Кнопка "Редактировать" -->
     <div style="text-align: center; margin-top: -40px; margin-left: -150px;">
-        <a class="button" href="/serviceHistory/edit">Редактировать</a>
+        <a class="button" id="serviceHistory_edit" href="/serviceHistory/edit">Редактировать</a>
     </div>
 </div>
 

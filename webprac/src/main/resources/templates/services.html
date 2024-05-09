@@ -136,23 +136,23 @@
     <div class="search-form">
         <form method="get" action="/services/search">
             <!-- Поля для ввода параметров -->
-            <input type="text" name="service_Name" placeholder="Название">
-            <input type="text" name="cost" placeholder="Стоимость">
+            <input type="text" id="name_search" name="service_Name" placeholder="Название">
+            <input type="text" id="cost_search" name="cost" placeholder="Стоимость">
             <!-- Кнопка поиска -->
-            <button type="submit" class="button">Найти</button>
+            <button type="submit" id="searchServices" class="button">Найти</button>
         </form>
     </div>
 
     <div class="add-form">
         <form method="post" action="/services/add">
             <!-- Поля для ввода параметров -->
-            <input type="text" name="service_Name" placeholder="Название">
-            <input type="text" name="cost" placeholder="Стоимость">
+            <input type="text" id="name_add" name="service_Name" placeholder="Название">
+            <input type="text" id="cost_add" name="cost" placeholder="Стоимость">
             <!-- Кнопка добавить -->
-            <button type="submit" class="button">Добавить</button>
+            <button type="submit" id="addService" class="button">Добавить</button>
         </form>
     </div>
-    <table class="centered-table">
+    <table id="servicesList" class="centered-table">
         <thead>
         <tr>
             <th>Название</th>
@@ -174,7 +174,7 @@
     </table>
     <!-- Кнопка "Редактировать" -->
     <div style="text-align: center; margin-top: -40px; margin-left: -150px;">
-        <a class="button" href="/services/edit">Редактировать</a>
+        <a class="button" id="services_edit" href="/services/edit">Редактировать</a>
     </div>
 </div>
 

@@ -37,6 +37,9 @@ dependencies {
 
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework:spring-orm'
+
+	implementation 'org.seleniumhq.selenium:selenium-java'
+	implementation 'org.testng:testng:7.1.0'
 }
 
 tasks.named('test') {

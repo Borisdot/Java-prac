@@ -136,30 +136,30 @@
     <div class="search-form">
         <form method="get" action="/employees/search">
             <!-- Поля для ввода параметров -->
-            <input type="text" name="employee_Name" placeholder="ФИО">
-            <input type="text" name="address" placeholder="Адрес">
-            <input type="text" name="phone" placeholder="Телефон">
-            <input type="text" name="email" placeholder="Почта">
-            <input type="text" name="function_" placeholder="Должность">
+            <input type="text" id="employee_Name_search" name="employee_Name" placeholder="ФИО">
+            <input type="text" id="address_search" name="address" placeholder="Адрес">
+            <input type="text" id="phone_search" name="phone" placeholder="Телефон">
+            <input type="text" id="email_search" name="email" placeholder="Почта">
+            <input type="text" id="function__search" name="function_" placeholder="Должность">
             <!-- Кнопка поиска -->
-            <button type="submit" class="button">Найти</button>
+            <button type="submit" id="searchEmployees" class="button">Найти</button>
         </form>
     </div>
 
     <div class="add-form">
         <form method="post" action="/employees/add">
             <!-- Поля для ввода параметров -->
-            <input type="text" name="employee_Name" placeholder="ФИО">
-            <input type="text" name="address" placeholder="Адрес">
-            <input type="text" name="phone" placeholder="Телефон">
-            <input type="text" name="email" placeholder="Почта">
-            <input type="text" name="function_" placeholder="Должность">
+            <input type="text" id="employee_Name_add" name="employee_Name" placeholder="ФИО">
+            <input type="text" id="address_add" name="address" placeholder="Адрес">
+            <input type="text" id="phone_add" name="phone" placeholder="Телефон">
+            <input type="text" id="email_add" name="email" placeholder="Почта">
+            <input type="text" id="function__add" name="function_" placeholder="Должность">
 
             <!-- Кнопка добавить -->
-            <button type="submit" class="button">Добавить</button>
+            <button type="submit" id="addEmployee" class="button">Добавить</button>
         </form>
     </div>
-    <table class="centered-table">
+    <table id="employeesList" class="centered-table">
         <thead>
         <tr>
             <th>ФИО</th>
@@ -190,7 +190,7 @@
     </table>
     <!-- Кнопка "Редактировать" -->
     <div style="text-align: center; margin-top: -40px; margin-left: -150px;">
-        <a class="button" href="/employees/edit">Редактировать</a>
+        <a class="button" id="employees_edit" href="/employees/edit">Редактировать</a>
     </div>
 </div>
 

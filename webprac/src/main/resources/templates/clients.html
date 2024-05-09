@@ -136,31 +136,31 @@
     <div class="search-form">
         <form method="get" action="/clients/search">
             <!-- Поля для ввода параметров -->
-            <input type="text" name="client_Name" placeholder="ФИО">
-            <input type="text" name="contact_person" placeholder="Контакт">
-            <input type="text" name="address" placeholder="Адрес">
-            <input type="text" name="phone" placeholder="Телефон">
-            <input type="text" name="email" placeholder="Почта">
+            <input type="text" id="client_Name_search" name="client_Name" placeholder="ФИО">
+            <input type="text" id="contact_person_search" name="contact_person" placeholder="Контакт">
+            <input type="text" id="address_search" name="address" placeholder="Адрес">
+            <input type="text" id="phone_search" name="phone" placeholder="Телефон">
+            <input type="text" id="email_search" name="email" placeholder="Почта">
 
             <!-- Кнопка поиска -->
-            <button type="submit" class="button">Найти</button>
+            <button type="submit" id="searchClients" class="button">Найти</button>
         </form>
     </div>
 
     <div class="add-form">
         <form method="post" action="/clients/add">
             <!-- Поля для ввода параметров -->
-            <input type="text" id="param1" name="client_Name" placeholder="ФИО">
-            <input type="text" id="param2" name="contact_person" placeholder="Контакт">
-            <input type="text" id="param3" name="address" placeholder="Адрес">
-            <input type="text" id="param4" name="phone" placeholder="Телефон">
-            <input type="text" id="param5" name="email" placeholder="Почта">
+            <input type="text" id="client_Name_add" name="client_Name" placeholder="ФИО">
+            <input type="text" id="contact_person" name="contact_person" placeholder="Контакт">
+            <input type="text" id="address" name="address" placeholder="Адрес">
+            <input type="text" id="phone" name="phone" placeholder="Телефон">
+            <input type="text" id="email" name="email" placeholder="Почта">
 
             <!-- Кнопка добавить -->
-            <button type="submit" class="button">Добавить</button>
+            <button type="submit" id="addClient" class="button">Добавить</button>
         </form>
     </div>
-    <table class="centered-table">
+    <table id="clientsList" class="centered-table">
         <thead>
         <tr>
             <th>ФИО</th>
@@ -191,7 +191,7 @@
     </table>
     <!-- Кнопка "Редактировать" -->
     <div style="text-align: center; margin-top: -40px; margin-left: -150px;">
-        <a class="button" href="/clients/edit">Редактировать</a>
+        <a class="button" id="clients_edit" href="/clients/edit">Редактировать</a>
     </div>
 </div>
 

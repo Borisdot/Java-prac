@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <title>Клиенты</title>
+    <title>Редактирование Клиентов</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -132,7 +132,7 @@
 <div th:replace="index :: page-header"></div>
 
 <div class="container">
-    <table class="centered-table">
+    <table id="clientsEditList" class="centered-table">
         <thead>
         <tr>
             <th>id</th>
@@ -146,7 +146,7 @@
         </tr>
         </thead>
         <tr th:each="client : ${clients}">
-            <td contenteditable="false" th:text="${client.id}"></td>
+            <td contenteditable="false" id="client_id_edit" th:text="${client.id}"></td>
             <td contenteditable="true" th:text="${client.name}"></td>
             <td contenteditable="true" th:text="${client.contact}"></td>
             <td contenteditable="true" th:text="${client.address}"></td>
@@ -156,7 +156,7 @@
             <td>
                 <form method="post" action="/clients/edit/delete" class="inlineForm">
                     <input type="hidden" name="id" th:value="${client.id}">
-                    <button type="submit">Удалить из базы</button>
+                    <button id="delete_button" type="submit">Удалить из базы</button>
                 </form>
             </td>
         </tr>
@@ -164,7 +164,7 @@
 </div>
 <!-- Кнопка "Закончить редактирование" -->
 <div style="text-align: center; margin-top: -40px; margin-left: -150px;">
-    <a class="button" href="/clients">Закончить редактирование</a>
+    <a class="button" id="endEdit" href="/clients">Закончить редактирование</a>
 </div>
 <div th:replace="index :: site-footer"></div>
 <div th:replace="index :: site-script"></div>
